@@ -1,0 +1,65 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      navigatingTo="onNavigatingTo"
+      class="page">
+    <ActionBar title="Cloud Journal" class="action-bar">
+        <ActionItem tap="{{ onNewEntry }}" 
+                   ios.position="right" 
+                   android.position="actionBar">
+            <Label text="&#xf067;" class="fas" />
+        </ActionItem>
+    </ActionBar>
+    
+    <GridLayout rows="*, auto">
+        <!-- Journal Entries List -->
+        <ListView items="{{ journalEntries }}" row="0" class="list-group">
+            <ListView.itemTemplate>
+                <GridLayout columns="auto, *" class="list-group-item p-4" tap="{{ $parent.onEntryTap }}">
+                    <Image src="{{ cloudImage }}" 
+                           width="80" height="80" 
+                           class="rounded-lg" 
+                           stretch="aspectFill"
+                           col="0" />
+                    <StackLayout col="1" class="ml-4">
+                        <Label text="{{ date, date }}" class="text-sm text-primary opacity-70" />
+                        <Label text="{{ title }}" class="text-lg font-medium text-primary" />
+                        <Label text="{{ mood }}" class="text-sm text-secondary" />
+                    </StackLayout>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+
+        <!-- Empty State -->
+        <StackLayout row="0" 
+                     class="p-8 text-center"
+                     visibility="{{ !journalEntries.length ? 'visible' : 'collapsed' }}">
+            <Label text="&#xf5ad;" class="fas text-6xl text-secondary" />
+            <Label text="Start Your Cloud Journal" 
+                   class="text-xl text-primary font-medium mt-4" />
+            <Label text="Capture your thoughts and feelings while cloud gazing" 
+                   class="text-sm text-primary opacity-70 mt-2" 
+                   textWrap="true" />
+        </StackLayout>
+
+        <GridLayout row="1" class="bottom-nav" rows="*" columns="*, *, *, *, *">
+            <StackLayout col="0" tap="{{ onHomeTab }}" class="bottom-nav-item">
+                <Label text="&#xf015;" class="fas" />
+                <Label text="Home" />
+            </StackLayout>
+            <StackLayout col="1" tap="{{ onExploreTab }}" class="bottom-nav-item">
+                <Label text="&#xf002;" class="fas" />
+                <Label text="Explore" />
+            </StackLayout>
+            <StackLayout col="2" tap="{{ onCameraTab }}" class="bottom-nav-item">
+                <Label text="&#xf030;" class="fas floating-button" />
+            </StackLayout>
+            <StackLayout col="3" tap="{{ onJournalTab }}" class="bottom-nav-item active">
+                <Label text="&#xf5ad;" class="fas" />
+                <Label text="Journal" />
+            </StackLayout>
+            <StackLayout col="4" tap="{{ onProfileTab }}" class="bottom-nav-item">
+                <Label text="&#xf007;" class="fas" />
+                <Label text="Profile" />
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>

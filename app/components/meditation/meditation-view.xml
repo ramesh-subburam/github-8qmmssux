@@ -1,0 +1,95 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      navigatingTo="onNavigatingTo"
+      class="page">
+    <ActionBar title="Cloud Meditation" class="action-bar">
+        <NavigationButton visibility="collapsed" />
+    </ActionBar>
+    
+    <GridLayout rows="auto, *, auto, auto">
+        <!-- Current Session -->
+        <StackLayout row="0" class="cloud-header p-4">
+            <Label text="{{ currentSession.title }}" 
+                   class="text-2xl font-bold text-primary text-center" />
+            <Label text="{{ currentSession.duration }}" 
+                   class="text-lg text-primary opacity-70 text-center" />
+        </StackLayout>
+
+        <!-- Meditation Content -->
+        <ScrollView row="1">
+            <StackLayout class="p-4">
+                <!-- Timer Display -->
+                <GridLayout rows="auto" columns="*" class="timer-display text-center p-8">
+                    <Label text="{{ formattedTime }}" 
+                           class="text-4xl font-bold text-primary" />
+                </GridLayout>
+
+                <!-- Controls -->
+                <GridLayout rows="auto" columns="auto, *, auto" class="controls p-4">
+                    <Button text="&#xf048;" 
+                            class="fas btn-control" 
+                            tap="{{ onRestart }}"
+                            col="0" />
+                    <Button text="{{ isPlaying ? '&#xf04c;' : '&#xf04b;' }}" 
+                            class="fas btn-primary btn-large" 
+                            tap="{{ onPlayPause }}"
+                            col="1" />
+                    <Button text="&#xf051;" 
+                            class="fas btn-control" 
+                            tap="{{ onNext }}"
+                            col="2" />
+                </GridLayout>
+
+                <!-- Session List -->
+                <ListView items="{{ meditationSessions }}" class="session-list">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="auto, *, auto" class="session-item p-4" tap="{{ $parent.onSessionSelect }}">
+                            <Label text="&#xf0c2;" class="fas text-secondary" col="0" />
+                            <StackLayout col="1" class="ml-4">
+                                <Label text="{{ title }}" class="font-medium" />
+                                <Label text="{{ duration }}" class="text-sm opacity-70" />
+                            </StackLayout>
+                            <Label text="{{ isPlaying ? '&#xf04c;' : '&#xf04b;' }}" 
+                                   class="fas" 
+                                   col="2" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Sound Controls -->
+        <GridLayout row="2" columns="*, *" class="p-4">
+            <Button text="Background Sounds" 
+                    tap="{{ onBackgroundSounds }}" 
+                    class="btn btn-secondary"
+                    col="0" />
+            <Button text="Nature Sounds" 
+                    tap="{{ onNatureSounds }}" 
+                    class="btn btn-secondary"
+                    col="1" />
+        </GridLayout>
+
+        <!-- Bottom Navigation -->
+        <GridLayout row="3" class="bottom-nav" rows="*" columns="*, *, *, *, *">
+            <StackLayout col="0" tap="{{ onHomeTab }}" class="bottom-nav-item">
+                <Label text="&#xf015;" class="fas" />
+                <Label text="Home" />
+            </StackLayout>
+            <StackLayout col="1" tap="{{ onExploreTab }}" class="bottom-nav-item">
+                <Label text="&#xf002;" class="fas" />
+                <Label text="Explore" />
+            </StackLayout>
+            <StackLayout col="2" tap="{{ onCameraTab }}" class="bottom-nav-item">
+                <Label text="&#xf030;" class="fas floating-button" />
+            </StackLayout>
+            <StackLayout col="3" class="bottom-nav-item active">
+                <Label text="&#xf676;" class="fas" />
+                <Label text="Meditate" />
+            </StackLayout>
+            <StackLayout col="4" tap="{{ onProfileTab }}" class="bottom-nav-item">
+                <Label text="&#xf007;" class="fas" />
+                <Label text="Profile" />
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>

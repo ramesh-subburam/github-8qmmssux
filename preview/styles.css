@@ -1,0 +1,133 @@
+/* Base Styles */
+:root {
+    --sky-blue: #A2DFF7;
+    --cloud-white: #F4F9FC;
+    --sunset-pink: #F5A7C0;
+    --golden-yellow: #FFDA7D;
+    --gentle-lavender: #E1C6F0;
+    --deep-ocean-blue: #2E4A65;
+}
+
+.preview-container {
+    max-width: 375px;
+    height: 667px;
+    margin: 20px auto;
+    background: linear-gradient(to bottom, var(--sky-blue), var(--cloud-white));
+    border-radius: 30px;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.action-bar {
+    background: rgba(255,255,255,0.95);
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--deep-ocean-blue);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.main-content {
+    padding: 20px;
+    height: calc(100% - 140px);
+    overflow-y: auto;
+}
+
+.preview-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.cloud-icon {
+    font-size: 48px;
+    color: var(--gentle-lavender);
+    margin-bottom: 15px;
+}
+
+.preview-title {
+    color: var(--deep-ocean-blue);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.preview-subtitle {
+    color: var(--deep-ocean-blue);
+    opacity: 0.7;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.button-container {
+    padding: 20px;
+}
+
+.button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.button-primary {
+    background: var(--sunset-pink);
+    color: white;
+}
+
+.button-secondary {
+    background: var(--cloud-white);
+    color: var(--deep-ocean-blue);
+    border: 1px solid var(--gentle-lavender);
+}
+
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.nav-item {
+    text-align: center;
+    color: var(--deep-ocean-blue);
+    opacity: 0.7;
+    font-size: 12px;
+}
+
+.nav-item.active {
+    opacity: 1;
+    color: var(--sunset-pink);
+}
+
+.nav-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.floating-button {
+    background: var(--sunset-pink);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -25px;
+    box-shadow: 0 4px 15px rgba(245,167,192,0.3);
+}

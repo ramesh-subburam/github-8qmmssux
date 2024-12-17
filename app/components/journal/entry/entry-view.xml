@@ -1,0 +1,54 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      navigatingTo="onNavigatingTo"
+      class="page">
+    <ActionBar title="{{ isEditing ? 'Edit Entry' : 'New Entry' }}" class="action-bar">
+        <NavigationButton text="Back" tap="{{ onBack }}" />
+        <ActionItem tap="{{ onSave }}" 
+                   ios.position="right" 
+                   android.position="actionBar">
+            <Label text="&#xf0c7;" class="fas" />
+        </ActionItem>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4">
+            <!-- Cloud Image -->
+            <Image src="{{ cloudImage }}" 
+                   height="200" 
+                   class="rounded-xl" 
+                   stretch="aspectFill"
+                   visibility="{{ cloudImage ? 'visible' : 'collapsed' }}" />
+            
+            <Button text="{{ cloudImage ? 'Change Photo' : 'Add Cloud Photo' }}"
+                    tap="{{ onAddPhoto }}"
+                    class="btn btn-secondary" />
+
+            <!-- Entry Form -->
+            <TextField hint="Title your moment..."
+                      text="{{ title }}"
+                      class="input large" />
+            
+            <TextView hint="What do you see in the clouds? How do they make you feel?"
+                      text="{{ content }}"
+                      height="200"
+                      class="input" />
+
+            <!-- Mood Selection -->
+            <Label text="How are you feeling?" class="label" />
+            <WrapLayout>
+                <Repeater items="{{ moods }}">
+                    <Repeater.itemTemplate>
+                        <Label text="{{ emoji }}"
+                               tap="{{ $parent.onMoodSelect }}"
+                               class="mood-emoji {{ isSelected ? 'selected' : '' }}" />
+                    </Repeater.itemTemplate>
+                </WrapLayout>
+
+            <!-- Weather Info -->
+            <GridLayout columns="auto, *" class="weather-info">
+                <Label text="&#xf6c4;" class="fas" col="0" />
+                <Label text="{{ weatherInfo }}" col="1" class="ml-2" />
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

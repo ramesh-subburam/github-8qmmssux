@@ -1,0 +1,21 @@
+<GridLayout rows="*" columns="*, *, *, *, *" class="bottom-nav">
+    <StackLayout col="0" tap="{{ onHomeTab }}" class="bottom-nav-item">
+        <Label text="&#xf015;" class="fas" />
+        <Label text="Home" />
+    </StackLayout>
+    <StackLayout col="1" tap="{{ onExploreTab }}" class="bottom-nav-item">
+        <Label text="&#xf002;" class="fas" />
+        <Label text="Explore" />
+    </StackLayout>
+    <StackLayout col="2" tap="{{ onCameraTab }}" class="bottom-nav-item">
+        <Label text="&#xf030;" class="fas floating-button" />
+    </StackLayout>
+    <StackLayout col="3" tap="{{ onNotificationsTab }}" class="bottom-nav-item">
+        <Label text="&#xf0f3;" class="fas" />
+        <Label text="Notifications" />
+    </StackLayout>
+    <StackLayout col="4" tap="{{ onProfileTab }}" class="bottom-nav-item">
+        <Label text="&#xf007;" class="fas" />
+        <Label text="Profile" />
+    </StackLayout>
+</GridLayout>

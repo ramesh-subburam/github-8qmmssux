@@ -1,0 +1,62 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      navigatingTo="onNavigatingTo"
+      class="page">
+    <ActionBar title="Cloud Capture" class="action-bar">
+        <NavigationButton visibility="collapsed" />
+    </ActionBar>
+    
+    <GridLayout rows="*, auto, auto">
+        <!-- Main Content -->
+        <StackLayout row="0" class="p-4">
+            <Image src="{{ lastCapture }}" 
+                   class="rounded-xl elevation-4" 
+                   height="300"
+                   stretch="aspectFill"
+                   visibility="{{ lastCapture ? 'visible' : 'collapsed' }}" />
+            
+            <StackLayout visibility="{{ !lastCapture ? 'visible' : 'collapsed' }}"
+                         class="card text-center p-8">
+                <Label text="&#xf0c2;" class="fas text-6xl text-secondary" />
+                <Label text="Capture your first cloud!" 
+                       class="text-xl text-primary font-medium mt-4" />
+                <Label text="Point your camera at the sky and tap the button below" 
+                       class="text-sm text-primary opacity-70 mt-2" 
+                       textWrap="true" />
+            </StackLayout>
+        </StackLayout>
+
+        <!-- Action Buttons -->
+        <StackLayout row="1" class="p-4">
+            <Button text="Take Photo" 
+                    tap="{{ onTakePhoto }}" 
+                    class="btn btn-primary" />
+            <Button text="Share Cloud" 
+                    tap="{{ onShare }}" 
+                    class="btn btn-secondary"
+                    visibility="{{ lastCapture ? 'visible' : 'collapsed' }}" />
+        </StackLayout>
+
+        <!-- Bottom Navigation -->
+        <GridLayout row="2" class="bottom-nav" rows="*" columns="*, *, *, *, *">
+            <StackLayout col="0" tap="{{ onHomeTab }}" class="bottom-nav-item">
+                <Label text="&#xf015;" class="fas" />
+                <Label text="Home" />
+            </StackLayout>
+            <StackLayout col="1" tap="{{ onExploreTab }}" class="bottom-nav-item">
+                <Label text="&#xf002;" class="fas" />
+                <Label text="Explore" />
+            </StackLayout>
+            <StackLayout col="2" class="bottom-nav-item">
+                <Label text="&#xf030;" class="fas floating-button" />
+            </StackLayout>
+            <StackLayout col="3" tap="{{ onNotificationsTab }}" class="bottom-nav-item">
+                <Label text="&#xf0f3;" class="fas" />
+                <Label text="Notifications" />
+            </StackLayout>
+            <StackLayout col="4" tap="{{ onProfileTab }}" class="bottom-nav-item">
+                <Label text="&#xf007;" class="fas" />
+                <Label text="Profile" />
+            </StackLayout>
+        </GridLayout>
+    </GridLayout>
+</Page>

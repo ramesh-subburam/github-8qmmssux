@@ -1,0 +1,34 @@
+@import '@nativescript/theme/css/core.css';
+@import '@nativescript/theme/css/default.css';
+@import './shared/styles/theme.css';
+
+/* Font Awesome Icons */
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+/* Animations */
+.fade-in {
+    animation-name: fadeIn;
+    animation-duration: 0.3;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.float {
+    animation-name: float;
+    animation-duration: 2;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10); }
+    100% { transform: translateY(0); }
+}
